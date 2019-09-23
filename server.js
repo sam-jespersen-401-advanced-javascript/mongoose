@@ -2,7 +2,7 @@ require('dotenv').config();
 require('./lib/connect')();
 const express = require('express');
 const app = express();
-const Cat = require('./lib/models/cat');
+const Language = require('./lib/models/language');
 
 app.use(express.json());
 
