@@ -6,32 +6,32 @@ const Language = require('./lib/models/language');
 
 app.use(express.json());
 
-app.get('/api/cats', (req, res, next) => {
-  Cat.find()
-    .then(cats => {
-      res.json(cats);
+app.get('/api/langs', (req, res, next) => {
+  Language.find()
+    .then(langs => {
+      res.json(langs);
     })
     .catch(next);
 });
 
-app.get('/api/cats/:id', (req, res, next) => {
-  Cat.findById(req.params.id)
+app.get('/api/langs/:id', (req, res, next) => {
+  Language.findById(req.params.id)
     .then(cat => {
       res.json(cat);
     })
     .catch(next);
 });
 
-app.post('/api/cats', (req, res, next) => {
-  Cat.create(req.body)
+app.post('/api/langs', (req, res, next) => {
+  Language.create(req.body)
     .then(cat => {
       res.json(cat);
     })
     .catch(next);
 });
 
-app.put('/api/cats/:id', (req, res, next) => {
-  Cat.findByIdAndUpdate(
+app.put('/api/langs/:id', (req, res, next) => {
+  Language.findByIdAndUpdate(
     req.params.id,
     req.body,
     { new: true }
@@ -42,8 +42,8 @@ app.put('/api/cats/:id', (req, res, next) => {
     .catch(next);
 });
 
-app.delete('/api/cats/:id', (req, res, next) => {
-  Cat.findByIdAndRemove(req.params.id)
+app.delete('/api/langs/:id', (req, res, next) => {
+  Language.findByIdAndRemove(req.params.id)
     .then(removed => {
       res.json(removed);
     })
