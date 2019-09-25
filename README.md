@@ -3,8 +3,9 @@
 ### Author: Sam Jespersen
 
 ### Links and Resources
-* [submission PR](https://github.com/sam-jespersen-401-advanced-javascript/lab-03/pull/2)
-* [travis](https://travis-ci.com/sam-jespersen-401-advanced-javascript/lab-03)
+* [submission PR](https://github.com/sam-jespersen-401-advanced-javascript/mongoose/pull/2)
+* [travis](https://travis-ci.com/sam-jespersen-401-advanced-javascript/mongoose)
+* [heroku](http://hoojacks-express.herokuapp.com)
 
 #### Running the app
 
