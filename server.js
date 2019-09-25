@@ -1,53 +1,16 @@
+// loads the .env environment variables
 require('dotenv').config();
-require('./lib/connect')();
-const express = require('express');
-const app = express();
-const Language = require('./lib/models/language');
+// connect to mongo
+require('./lib/connect')(process.env.MONGODB_URI);
 
-app.use(express.json());
+// require the app http event handler
+const app = require('./lib/app');
+// create an http server that uses app
+const { createServer } = require('http');
+const server = createServer(app);
 
-app.get('/api/langs', (req, res, next) => {
-  Language.find()
-    .then(langs => {
-      res.json(langs);
-    })
-    .catch(next);
+// start the server by listening on a port
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+  console.log(`Listening on ${PORT}`);
 });
-
-app.get('/api/langs/:id', (req, res, next) => {
-  Language.findById(req.params.id)
-    .then(cat => {
-      res.json(cat);
-    })
-    .catch(next);
-});
-
-app.post('/api/langs', (req, res, next) => {
-  Language.create(req.body)
-    .then(cat => {
-      res.json(cat);
-    })
-    .catch(next);
-});
-
-app.put('/api/langs/:id', (req, res, next) => {
-  Language.findByIdAndUpdate(
-    req.params.id,
-    req.body,
-    { new: true }
-  )
-    .then(cat => {
-      res.json(cat);
-    })
-    .catch(next);
-});
-
-app.delete('/api/langs/:id', (req, res, next) => {
-  Language.findByIdAndRemove(req.params.id)
-    .then(removed => {
-      res.json(removed);
-    })
-    .catch(next);
-});
-
-app.listen(3000, () => console.log('server running on 3000'));
